@@ -4,8 +4,6 @@ import React from "react"
 import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
 import { FileText, Calendar, ArrowRight } from "lucide-react"
-import Image from "next/image"
-import { ErrorBoundary } from "react-error-boundary"
 
 const container = {
   hidden: { opacity: 0 },

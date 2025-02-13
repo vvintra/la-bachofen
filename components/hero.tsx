@@ -70,7 +70,7 @@ export function Hero() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-blue-600 rounded-3xl blur-3xl opacity-20" />
             <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl overflow-hidden shadow-2xl">
-              <a href="https://www.instagram.com/labachofen/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/labachofen.facet/" target="_blank" rel="noopener noreferrer">
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-J3GUQyGlAQOagfbweLuMVWHKlBMF6x.png"
                   alt="Calendario Académico 2025"

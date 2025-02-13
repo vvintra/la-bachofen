@@ -6,11 +6,20 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Calendar, FileText, GraduationCap, Users } from "lucide-react"
+import { Calendar, FileText, GraduationCap, Users, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { useState } from "react"
 
 export default function IngresoPage() {
+  const [isOpen, setIsOpen] = useState(false)
+  const tabItems = [
+    { value: "info", label: "Información General" },
+    { value: "courses", label: "Cursos de Nivelación" },
+    { value: "tests", label: "Pruebas de Suficiencia" },
+    { value: "faq", label: "Preguntas Frecuentes" },
+  ]
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-900 to-blue-950 text-white">
       <Container className="py-20">
@@ -28,36 +37,118 @@ export default function IngresoPage() {
         </motion.div>
 
         <Tabs defaultValue="info" className="space-y-8">
-          <TabsList className="grid grid-cols-1 md:grid-cols-4 gap-4 bg-blue-800/20 p-2 rounded-lg">
-            <TabsTrigger value="info">Información General</TabsTrigger>
-            <TabsTrigger value="courses">Cursos de Nivelación</TabsTrigger>
-            <TabsTrigger value="tests">Pruebas de Suficiencia</TabsTrigger>
-            <TabsTrigger value="faq">Preguntas Frecuentes</TabsTrigger>
-          </TabsList>
+          <div className="relative mb-4 md:mb-0">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden w-full flex items-center justify-between p-2 bg-blue-800/20 rounded-lg text-white"
+            >
+              <span>Seleccionar sección</span>
+              <ChevronDown className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
+            </button>
+            {isOpen && <div className="fixed inset-0 bg-blue-950/80 z-40 md:hidden" onClick={() => setIsOpen(false)} />}
+            <TabsList
+              className={`${
+                isOpen ? "absolute" : "hidden"
+              } md:relative md:flex z-50 w-full flex-col md:flex-row md:grid md:grid-cols-4 gap-2 bg-blue-800/20 p-2 rounded-lg shadow-lg`}
+            >
+              {tabItems.map((item) => (
+                <TabsTrigger
+                  key={item.value}
+                  value={item.value}
+                  onClick={() => setIsOpen(false)}
+                  className="w-full text-left md:text-center"
+                >
+                  {item.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
 
           <TabsContent value="info">
             <Card className="bg-blue-800/20 border-blue-700">
               <CardHeader>
                 <CardTitle>Información General</CardTitle>
                 <CardDescription className="text-blue-200">
-                  Detalles importantes sobre el proceso de ingreso
+                  Proceso de inscripción y requisitos para el ingreso
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p>
-                  Se considera aspirante a ingresar a la Facultad a todo aquel interesado que haya completado el nivel
-                  secundario (incluidos los que deban alguna materia para obtener el título) y todo interesado que esté
-                  cursando el último año del nivel secundario.
-                </p>
-                <p>
-                  El aspirante puede optar por distintas formas de nivelación: cumpliendo con los requisitos del Curso
-                  de Nivelación en Matemáticas, o bien, con una Prueba de Suficiencia.
-                </p>
-                <Button asChild>
-                  <Link href="https://www.facet.unt.edu.ar/ingreso/wp-content/uploads/sites/66/2024/11/Programa-Nivelacion-en-Matematica.pdf">
-                    <FileText className="mr-2 h-4 w-4" /> Ver Programa de Nivelación
-                  </Link>
-                </Button>
+              <CardContent className="space-y-6">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-white">Pasos para la Inscripción</h3>
+                  <div className="space-y-4">
+                    <div className="bg-blue-900/30 p-4 rounded-lg">
+                      <p className="font-semibold text-orange-400 mb-2">1. Pago de Inscripción</p>
+                      <p className="text-blue-200">$2.000 (efectivo) hasta el miércoles 11/12</p>
+                      <p className="text-blue-200">Lugar: Tesorería de la FACET (Planta Baja del Block 3)</p>
+                      <p className="text-blue-200">Horario: Lunes a Viernes, de 8 a 12</p>
+                    </div>
+
+                    <div className="bg-blue-900/30 p-4 rounded-lg">
+                      <p className="font-semibold text-orange-400 mb-2">2. Pre-inscripción (UNA SOLA CARRERA)</p>
+                      <p className="text-blue-200">Realizar la pre-inscripción a través del sistema SIU Guaraní</p>
+                      <Button className="mt-2" asChild>
+                        <Link href="https://guarani.unt.edu.ar/preinscripciones/facet/">Acceder al SIU Guaraní</Link>
+                      </Button>
+                    </div>
+
+                    <div className="bg-blue-900/30 p-4 rounded-lg">
+                      <p className="font-semibold text-orange-400 mb-2">3. Presentación de Documentación</p>
+                      <p className="text-blue-200 mb-2">Presentar la siguiente documentación de manera virtual:</p>
+                      <ul className="list-disc list-inside space-y-2 text-blue-200">
+                        <li>Ficha pre-inscripción</li>
+                        <li>Comprobante de Pago de Inscripción</li>
+                        <li>DNI (escaneado color de ambos lados)</li>
+                        <li>Acta de Nacimiento legalizada y actualizada</li>
+                        <li>Certificado Analítico de Estudios Secundarios o Constancia de Título en trámite</li>
+                        <li>Fotografía color tipo carnet 4x4 (fondo claro frente perfil derecho)</li>
+                      </ul>
+                      <Button className="mt-4" asChild>
+                        <Link href="https://forms.gle/5uDvKFkpBSTZ68Dn6">Formulario de Documentación</Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-white">Eximición de Ingreso</h3>
+                  <div className="bg-blue-900/30 p-4 rounded-lg space-y-4">
+                    <p className="text-blue-200">
+                      Puedes solicitar la eximición del ingreso si cuentas con alguna de estas condiciones:
+                    </p>
+                    <ul className="list-disc list-inside space-y-2 text-blue-200">
+                      <li>Constancia de Ingreso Aprobado</li>
+                      <li>Matemática aprobada en cualquier carrera Universitaria</li>
+                      <li>Matemática de Nivel Terciario (sujeto a evaluación del programa)</li>
+                    </ul>
+
+                    <div className="mt-4">
+                      <p className="font-semibold text-orange-400 mb-2">Proceso de Eximición:</p>
+                      <ol className="list-decimal list-inside space-y-2 text-blue-200">
+                        <li>Presentar nota dirigida al decano en Mesa de Entradas (Block 3, PB)</li>
+                        <li>Adjuntar Estado Académico de la institución de origen</li>
+                        <li>Incluir programas legalizados de materias a equiparar</li>
+                        <li>Adjuntar comprobante de pago del trámite</li>
+                        <li>Presentar Cancelación de Matrícula (si proviene de otra universidad)</li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-orange-500/20 rounded-lg">
+                  <p className="text-white font-semibold">Inicio de Clases</p>
+                  <p className="text-blue-200">Las clases inician en modalidad presencial el Lunes 17/03/2025</p>
+                </div>
+
+                <div className="mt-6">
+                  <p className="text-blue-200">
+                    Para consultas sobre preinscripciones, contactar al Depto. Despacho de Dirección Alumnos:
+                  </p>
+                  <Button variant="link" className="text-orange-400 hover:text-orange-300" asChild>
+                    <Link href="mailto:despachoalumnos_facet@herrera.unt.edu.ar">
+                      despachoalumnos_facet@herrera.unt.edu.ar
+                    </Link>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>

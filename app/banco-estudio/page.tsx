@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
-import { Book, Download, Search, Star } from "lucide-react"
-import { Input } from "@/components/ui/input"
+import { Book, Search } from "lucide-react"
 
 const container = {
   hidden: { opacity: 0 },

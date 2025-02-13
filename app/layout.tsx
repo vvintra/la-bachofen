@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "BACHOFEN - Exactas y Tecnología",
   description: "Portal académico para estudiantes de la FACET",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -28,3 +29,6 @@ export default function RootLayout({
   )
 }
 
+
+
+import './globals.css'
