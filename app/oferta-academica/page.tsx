@@ -194,36 +194,29 @@ export default function OfertaAcademicaPage() {
               variants={container}
               initial="hidden"
               animate="show"
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {filteredCarrerasGrado.length > 0 ? (
                 filteredCarrerasGrado.map((carrera, index) => (
                   <motion.div key={index} variants={item} className="group relative">
                     <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
-                    <Card className="relative overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-orange-500/50 transition-all duration-300 h-full flex flex-col">
-                      <CardHeader className="pb-3">
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-orange-400/20 flex items-center justify-center text-orange-400 flex-shrink-0">
-                            <GraduationCap className="w-5 h-5" />
-                          </div>
-                          <div className="flex-1">
-                            <CardTitle className="text-lg sm:text-xl text-white leading-tight">
-                              {carrera.nombre}
-                            </CardTitle>
-                            <CardDescription className="text-blue-200 flex items-center mt-1.5 text-sm">
-                              <Clock className="w-3.5 h-3.5 mr-1" /> Duración: {carrera.duracion}
+                    <Card className="relative overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-orange-500/50 transition-all duration-300 h-full">
+                      <CardHeader>
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <CardTitle className="text-xl text-white">{carrera.nombre}</CardTitle>
+                            <CardDescription className="text-blue-200 flex items-center mt-2">
+                              <Clock className="w-4 h-4 mr-1" /> Duración: {carrera.duracion}
                             </CardDescription>
+                          </div>
+                          <div className="w-12 h-12 rounded-xl bg-orange-400/20 flex items-center justify-center text-orange-400">
+                            <GraduationCap className="w-6 h-6" />
                           </div>
                         </div>
                       </CardHeader>
-                      <CardContent className="pt-3 border-t border-white/10 flex-1">
-                        <p className="text-blue-100 text-sm">{carrera.descripcion}</p>
+                      <CardContent>
+                        <p className="text-blue-100">{carrera.descripcion}</p>
                       </CardContent>
-                      <div className="p-3 pt-0 mt-auto">
-                        <div className="w-full px-3 py-2 text-center text-sm rounded-lg bg-orange-500/20 text-orange-400 hover:bg-orange-500/30 transition-colors duration-200 cursor-pointer">
-                          Ver detalles
-                        </div>
-                      </div>
                     </Card>
                   </motion.div>
                 ))
@@ -242,36 +235,29 @@ export default function OfertaAcademicaPage() {
               variants={container}
               initial="hidden"
               animate="show"
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {filteredCarrerasPreGrado.length > 0 ? (
                 filteredCarrerasPreGrado.map((carrera, index) => (
                   <motion.div key={index} variants={item} className="group relative">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
-                    <Card className="relative overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
-                      <CardHeader className="pb-3">
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-blue-400/20 flex items-center justify-center text-blue-400 flex-shrink-0">
-                            <Award className="w-5 h-5" />
-                          </div>
-                          <div className="flex-1">
-                            <CardTitle className="text-lg sm:text-xl text-white leading-tight">
-                              {carrera.nombre}
-                            </CardTitle>
-                            <CardDescription className="text-blue-200 flex items-center mt-1.5 text-sm">
-                              <Clock className="w-3.5 h-3.5 mr-1" /> Duración: {carrera.duracion}
+                    <Card className="relative overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 transition-all duration-300 h-full">
+                      <CardHeader>
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <CardTitle className="text-xl text-white">{carrera.nombre}</CardTitle>
+                            <CardDescription className="text-blue-200 flex items-center mt-2">
+                              <Clock className="w-4 h-4 mr-1" /> Duración: {carrera.duracion}
                             </CardDescription>
+                          </div>
+                          <div className="w-12 h-12 rounded-xl bg-blue-400/20 flex items-center justify-center text-blue-400">
+                            <Award className="w-6 h-6" />
                           </div>
                         </div>
                       </CardHeader>
-                      <CardContent className="pt-3 border-t border-white/10 flex-1">
-                        <p className="text-blue-100 text-sm">{carrera.descripcion}</p>
+                      <CardContent>
+                        <p className="text-blue-100">{carrera.descripcion}</p>
                       </CardContent>
-                      <div className="p-3 pt-0 mt-auto">
-                        <div className="w-full px-3 py-2 text-center text-sm rounded-lg bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors duration-200 cursor-pointer">
-                          Ver detalles
-                        </div>
-                      </div>
                     </Card>
                   </motion.div>
                 ))
