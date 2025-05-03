@@ -133,7 +133,7 @@ export default function WhatsAppGroupPage() {
             Si eres delegado o quieres crear un nuevo grupo para tu carrera, contáctanos
           </p>
           <a
-            href="https://www.instagram.com/labachofen.facet/"
+            href="https://www.instagram.com/labachofen/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 mt-6 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-200"
@@ -149,4 +149,3 @@ export default function WhatsAppGroupPage() {
     </div>
   )
 }
-

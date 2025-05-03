@@ -9,4 +9,3 @@ export async function GET() {
     caption: "Latest post from BACHOFEN",
   })
 }
-

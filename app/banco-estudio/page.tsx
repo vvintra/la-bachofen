@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion"
 import { Container } from "@/components/ui/container"
-import { Book, Search } from "lucide-react"
+import { Book, Download, Search, Star } from "lucide-react"
+import { Input } from "@/components/ui/input"
 
 const container = {
   hidden: { opacity: 0 },
@@ -165,4 +166,3 @@ export default function BancoEstudioPage() {
     </div>
   )
 }
-

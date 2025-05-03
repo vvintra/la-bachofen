@@ -12,6 +12,8 @@ const menuItems = [
   { title: "Grupo de WhatsApp", href: "/whatsapp-group" },
   { title: "Trámites", href: "/tramites" },
   { title: "Banco de Estudio", href: "/banco-estudio" },
+  { title: "Notas Modelo", href: "/notas-modelo" },
+  { title: "Oferta Académica", href: "/oferta-academica" },
 ]
 
 export function Navigation() {
@@ -96,4 +98,3 @@ export function Navigation() {
     </nav>
   )
 }
-
